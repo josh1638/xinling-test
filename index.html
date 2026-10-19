@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#211b24" />
+<meta name="description" content="心灵探索心理测试：12 道选择题，探索你面对关系、压力与选择时的真实反应。完成后自动汇总答案和 A/B/C/D 统计。" />
+<title>心灵探索 · 心理测试</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg:#211b24;--panel:#2d2531;--card:#372b3b;--card-hi:#493549;--stroke:#5a4558;
+  --gold:#d8af76;--gold-soft:#f1d6ab;--white:#f9f3eb;--muted:#c3b5bd;--muted2:#a99aa6;
+  --green:#bdd8be;--shadow:0 22px 90px rgba(11,7,18,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;min-height:100dvh;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;color:var(--white);background:radial-gradient(ellipse 55% 52% at 93% 0%,rgba(112,77,107,.23),transparent 67%),radial-gradient(ellipse 55% 60% at -15% 90%,rgba(102,70,94,.16),transparent 75%),var(--bg);letter-spacing:.015em}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible+span{outline:3px solid var(--gold-soft);outline-offset:3px}
+.site-header{max-width:1100px;margin:auto;padding:29px 36px 0;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:13px;font-weight:700;letter-spacing:.12em;font-size:15px}
+.brand-symbol{width:32px;height:32px;display:grid;place-items:center;border:1px solid rgba(216,175,118,.55);border-radius:50%;color:var(--gold);font-size:19px;font-weight:400}
+.header-right{font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--gold);text-align:right}
+main{max-width:1000px;margin:auto;padding:50px 28px 84px;min-height:calc(100dvh - 160px)}
+.view{animation:appear .34s ease both}
+[hidden]{display:none!important}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{font-size:12px;letter-spacing:.23em;font-weight:800;color:var(--gold);text-transform:uppercase}
+.dash{width:56px;height:3px;background:var(--gold);margin:25px 0}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(45px,7vw,81px);font-weight:770;line-height:1.17;letter-spacing:.065em;margin:25px 0}
+h2{font-size:clamp(29px,4.5vw,47px);line-height:1.38;letter-spacing:.018em;margin:16px 0 20px;font-weight:760}
+h3{font-size:20px;line-height:1.4}
+.lead{max-width:600px;color:var(--muted);font-size:clamp(16px,2vw,19px);line-height:1.85}
+.intro-layout{display:grid;grid-template-columns:1.3fr .75fr;align-items:center;gap:55px;padding:45px 0 65px}
+.orbits{height:350px;position:relative;min-width:260px}
+.orb{position:absolute;border-radius:50%;box-shadow:inset 6px 10px 30px rgba(255,255,255,.018),7px 14px 24px rgba(5,4,7,.3)}
+.orb.one{width:245px;height:245px;background:#473544;top:8px;right:46px}
+.orb.two{width:162px;height:162px;background:#63495d;top:115px;right:0}
+.orb.three{width:86px;height:86px;background:#775569;top:220px;right:187px}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:18px 0 34px}
+.tip{background:rgba(66,49,68,.48);border:1px solid rgba(149,113,139,.28);border-radius:15px;padding:21px 19px;min-height:132px}
+.tip-no{font-size:12px;color:var(--gold);font-weight:800;letter-spacing:.15em;margin-bottom:10px}
+.tip strong{display:block;margin-bottom:6px;font-size:15px}
+.tip p{margin:0;font-size:13px;line-height:1.7;color:var(--muted)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:11px;border-radius:11px;padding:15px 25px;font-size:15px;font-weight:750;min-height:51px;transition:background .2s,border-color .2s,transform .2s}
+.btn:hover:not(:disabled){transform:translateY(-1px)}
+.btn.primary{background:var(--gold);color:#261b23}
+.btn.primary:hover:not(:disabled){background:#e9c591}
+.btn.secondary{border-color:var(--stroke);background:rgba(70,52,71,.22);color:var(--white)}
+.btn.secondary:hover:not(:disabled){background:rgba(100,76,101,.34)}
+.btn.tertiary{padding:13px 4px;border:0;background:transparent;color:var(--muted);font-size:14px}
+.btn:disabled{opacity:.40;cursor:not-allowed}
+.privacy{font-size:12px;color:var(--muted2);margin-top:17px;line-height:1.8}
+.quiz-container{max-width:860px;margin:auto}
+.progress-line{height:6px;border-radius:100px;background:#4b3a4a;overflow:hidden;margin-bottom:19px}
+.progress-fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#bd8c58,var(--gold-soft));transition:width .3s ease}
+.progress-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:38px}
+.progress-head .current{font-weight:800;font-size:13px;letter-spacing:.13em;color:var(--gold)}
+.progress-head .total{font-size:13px;color:var(--muted)}
+.question-sub{font-size:15px;color:var(--muted);margin-bottom:30px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{display:block;width:100%;padding:0;margin:0 0 25px}
+.option-list{display:grid;gap:13px}
+.option-label{position:relative;display:block;cursor:pointer}
+.option-label input{position:absolute;left:22px;top:50%;transform:translateY(-50%);opacity:0;width:25px;height:25px;z-index:1;cursor:pointer}
+.option-face{display:flex;align-items:center;gap:23px;background:var(--card);border:1px solid var(--stroke);border-radius:13px;padding:20px 23px;min-height:82px;transition:background .2s,border-color .2s,box-shadow .2s}
+.option-label:hover .option-face{background:#413246;border-color:#8b687d}
+.option-label input:checked+.option-face{background:#50404d;border-color:var(--gold);box-shadow:0 0 0 1px rgba(216,175,118,.2),0 9px 25px rgba(0,0,0,.15)}
+.option-letter{flex:none;width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(216,175,118,.42);border-radius:10px;color:var(--gold);font-size:21px;font-weight:800}
+.option-label input:checked+.option-face .option-letter{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.option-text{font-size:clamp(15px,1.95vw,19px);line-height:1.6}
+.option-check{margin-left:auto;color:var(--gold-soft);opacity:0;font-size:21px;line-height:1}
+.option-label input:checked+.option-face .option-check{opacity:1}
+.quiz-footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:32px}
+.question-dots{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:36px auto 0}
+.dot{border:1px solid #5f4b5d;background:#3a2e3c;border-radius:50%;width:14px;height:14px;min-width:14px;padding:0}
+.dot.answered{background:var(--gold);border-color:var(--gold)}
+.dot.current{box-shadow:0 0 0 4px rgba(216,175,118,.21)}
+.dot:focus-visible{outline-offset:5px}
+.result-top{display:flex;justify-content:space-between;gap:24px;align-items:start;margin-bottom:28px}
+.result-top h2{margin-bottom:7px}
+.result-top p{color:var(--muted);line-height:1.75;margin:0}
+.result-mark{width:75px;height:75px;flex:none;border-radius:50%;background:rgba(216,175,118,.13);border:1px solid rgba(216,175,118,.45);display:grid;place-items:center;font-size:32px;color:var(--gold)}
+.panel{background:rgba(54,42,57,.8);border:1px solid rgba(149,113,139,.38);border-radius:18px;padding:26px 28px;margin-bottom:23px;box-shadow:var(--shadow)}
+.panel-title{font-size:16px;letter-spacing:.03em;font-weight:750;margin-bottom:23px}
+.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.count-tile{border:1px solid #634e61;border-radius:12px;background:#2b2330;padding:17px 14px;text-align:center}
+.count-tile .letter{display:block;color:var(--gold);font-size:21px;font-weight:800;margin-bottom:7px}
+.count-tile .count{display:block;font-size:31px;font-weight:800;line-height:1.2}
+.count-tile .pct{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+.bars{display:grid;gap:15px}
+.bar-row{display:grid;grid-template-columns:25px 1fr 28px;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.bar-track{height:10px;background:#211c26;border-radius:50px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,#aa7c52,#e4bd8b);width:0;border-radius:inherit;transition:width .35s ease}
+.leading{font-size:14px;color:var(--gold-soft);margin-top:20px;line-height:1.7}
+.answer-codes{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.answer-code{border:1px solid #685267;border-radius:10px;text-align:center;padding:15px 4px;background:#2b2330}
+.answer-code small{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}
+.answer-code strong{font-size:23px;color:var(--gold)}
+.answers-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answer-item{padding:18px;border:1px solid #614c5e;background:#2b2330;border-radius:12px}
+.answer-item header{display:flex;gap:9px;justify-content:space-between;align-items:start;margin-bottom:10px}
+.answer-item .number{font-size:12px;color:var(--gold);font-weight:800;letter-spacing:.06em}
+.answer-item .answer-chip{background:#634857;color:var(--gold-soft);border-radius:7px;padding:3px 9px;font-weight:800;font-size:13px}
+.answer-item .question{font-size:14px;line-height:1.65;margin:0 0 8px;color:var(--white);font-weight:700}
+.answer-item .answer{font-size:13px;line-height:1.65;margin:0;color:var(--muted)}
+.result-actions{margin-top:30px}
+.site-footer{max-width:1100px;margin:auto;padding:0 36px 25px;display:flex;gap:12px;justify-content:space-between;font-size:11px;color:var(--muted2);line-height:1.5}
+.notice{color:var(--muted);line-height:1.8;font-size:13px;margin:13px 0 0}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:99;padding:11px 18px;border-radius:12px;background:var(--gold);color:#201924;font-size:13px;font-weight:800;box-shadow:0 15px 35px rgba(0,0,0,.3)}
+@media(max-width:750px){
+ .site-header{padding:20px 19px 0}.header-right{font-size:9px;letter-spacing:.08em}
+ main{padding:30px 19px 65px}
+ .intro-layout{display:block;padding:48px 0 22px}.orbits{position:absolute;right:8px;top:75px;opacity:.2;z-index:-1;transform:scale(.75);transform-origin:top right}
+ h1{margin:16px 0 24px}.dash{margin:24px 0}.tips{grid-template-columns:1fr;gap:10px}.tip{min-height:auto;padding:14px 17px}.tip p{font-size:12px}
+ .progress-head{margin-bottom:27px}legend{margin-bottom:17px}.option-face{padding:16px 15px;min-height:76px;gap:14px}.option-letter{width:38px;height:38px}.option-text{font-size:15px}
+ .quiz-footer .btn{padding:13px 19px}
+ .panel{padding:21px 16px}.result-top{align-items:center}.result-mark{width:50px;height:50px;font-size:23px}
+ .count-grid{gap:7px}.count-tile{padding:12px 4px}.count-tile .count{font-size:26px}.count-tile .letter{font-size:17px}
+ .answer-codes{grid-template-columns:repeat(4,1fr)}.answers-list{grid-template-columns:1fr}
+ .site-footer{padding:0 19px 18px;display:block}
+}
+@media(max-width:380px){.brand{font-size:13px;gap:8px}.brand-symbol{width:29px;height:29px}.header-right{font-size:8px}.option-check{display:none}.count-tile .count{font-size:23px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{
+ :root{color-scheme:light}body{background:#fff!important;color:#222!important;font-size:12px}
+ .site-header,.site-footer,#intro-view,#quiz-view,.result-actions,.result-mark,.privacy,.toast{display:none!important}
+ main{max-width:100%;padding:0;min-height:0}#result-view{display:block!important;animation:none}
+ .panel,.answer-item,.count-tile,.answer-code{background:#fff!important;color:#222!important;box-shadow:none!important;border-color:#ddd!important;break-inside:avoid}
+ .panel{padding:12px;margin-bottom:12px}.panel-title{margin-bottom:10px}.result-top{margin-bottom:13px}.result-top h2,.result-top p,.result-top .eyebrow,.count-tile .count,.count-tile .letter,.answer-item .question,.answer-item .answer,.answer-item .number,.answer-code strong{color:#222!important}
+ .answers-list{grid-template-columns:1fr 1fr}.answer-item{padding:9px}.answer-item header{margin-bottom:4px}.answer-item .question{font-size:12px}.answer-item .answer{font-size:11px}.count-grid{margin-bottom:10px}.bars{gap:7px}
+ .answer-item .answer-chip{color:#222!important;background:#eee!important}
+ .bar-track{background:#eee!important}.bar-fill{background:#888!important;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><span class="brand-symbol" aria-hidden="true">✦</span><span>心灵探索</span></div>
+  <div class="header-right">PSYCHOLOGY TEST × TAROT NIGHT</div>
+</header>
+<main>
+  <section class="view" id="intro-view" aria-labelledby="intro-title">
+    <div class="intro-layout">
+      <div>
+        <div class="eyebrow">A JOURNEY WITHIN YOURSELF</div>
+        <h1 id="intro-title">心灵探索<br>心理测试</h1>
+        <div class="dash"></div>
+        <p class="lead">12 道选择题，探索你面对关系、压力与选择时的真实反应。</p>
+        <p class="lead" style="font-size:15px;color:#d6a9bc">没有标准答案，只有更了解自己的机会。</p>
+      </div>
+      <div class="orbits" aria-hidden="true"><div class="orb one"></div><div class="orb two"></div><div class="orb three"></div></div>
+    </div>
+    <div class="eyebrow" style="margin-bottom:15px">BEFORE YOU BEGIN · 开始前</div>
+    <div class="tips">
+      <div class="tip"><div class="tip-no">01</div><strong>回想最近三个月</strong><p>请根据你最近三个月的真实状态作答。</p></div>
+      <div class="tip"><div class="tip-no">02</div><strong>每题只选一个</strong><p>选择最接近你的第一反应，不必反复纠结。</p></div>
+      <div class="tip"><div class="tip-no">03</div><strong>不需要迎合答案</strong><p>这不是诊断，也没有好坏之分；重点是认识自己。</p></div>
+    </div>
+    <button class="btn primary" id="start-btn" type="button">开始探索 <span aria-hidden="true">→</span></button>
+    <p class="privacy">所有答案仅在当前网页内处理，不会上传到服务器；重新载入网页将清空答案。</p>
+  </section>
+
+  <section class="view quiz-container" id="quiz-view" hidden aria-labelledby="question-title">
+    <div class="progress-head">
+      <span class="current" id="step-label">QUESTION 01</span>
+      <span class="total" id="progress-text">第 1 / 12 题</span>
+    </div>
+    <div class="progress-line" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" id="progressbar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="eyebrow">心灵探索 / QUESTION <span id="question-index">01</span></div>
+    <form id="quiz-form">
+      <fieldset>
+        <legend><h2 id="question-title">请选择一个最接近你的答案</h2></legend>
+        <p class="question-sub">请选一个最接近你最近真实反应的答案。</p>
+        <div class="option-list" id="option-list"></div>
+      </fieldset>
+    </form>
+    <div class="quiz-footer">
+      <button class="btn secondary" id="previous-btn" type="button">← 上一题</button>
+      <button class="btn primary" id="next-btn" type="button" disabled>下一题 →</button>
+    </div>
+    <div class="question-dots" id="question-dots" aria-label="跳转到题目"></div>
+  </section>
+
+  <section class="view" id="result-view" hidden aria-labelledby="result-title">
+    <div class="result-top">
+      <div><div class="eyebrow">YOUR ANSWER SHEET</div><h2 id="result-title">记录你的选择</h2><p>你已经完成全部 12 道题，以下是你的答案与选项统计。</p></div>
+      <div class="result-mark" aria-hidden="true">✓</div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">A / B / C / D 选项统计</div>
+      <div class="count-grid" id="count-grid"></div>
+      <div class="bars" id="bars"></div>
+      <p class="leading" id="leading"></p>
+    </div>
+    <div class="panel">
+      <div class="panel-title">12 题答案总览</div>
+      <div class="answer-codes" id="answer-codes"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">我的完整选择</div>
+      <div class="answers-list" id="answers-list"></div>
+    </div>
+    <p class="notice">下一步：统计 A / B / C / D 各出现几次，再进入塔罗探索环节。<br>温馨提醒：结果用于自我探索与活动互动，不代表心理诊断。</p>
+    <div class="actions result-actions">
+      <button class="btn primary" id="copy-btn" type="button">复制结果</button>
+      <button class="btn secondary" id="save-btn" type="button">保存文字版</button>
+      <button class="btn secondary" id="print-btn" type="button">打印 / 存为 PDF</button>
+      <button class="btn tertiary" id="edit-btn" type="button">← 返回修改</button>
+      <button class="btn tertiary" id="restart-btn" type="button">重新开始</button>
+    </div>
+  </section>
+</main>
+<footer class="site-footer"><span>心灵探索心理测试 · 心理测试 × 塔罗之夜</span><span>留一点时间，听见自己的声音。</span></footer>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+'use strict';
+const QUESTIONS = [{"number":1,"question":"当你很在意的人突然变得冷淡，你最可能会？","options":{"A":"反复想是不是自己做错了什么，想确认对方的心意。","B":"先把情绪压下来，假装没事，不想显得自己太在意。","C":"主动问清楚发生什么，想尽快把问题解决。","D":"先观察一阵子，也借这个机会想想自己真正要什么。"}},{"number":2,"question":"当你感到委屈时，你通常会？","options":{"A":"希望对方主动发现，给自己一点安慰。","B":"先忍住，等情绪过去再说，甚至干脆不提。","C":"把事情讲清楚，希望马上找到解决办法。","D":"先独处整理感受，再决定要不要表达。"}},{"number":3,"question":"面对一个重要决定，你最容易被什么影响？","options":{"A":"担心选错后会失去重要的人或机会。","B":"顾虑别人怎么看，怕让人失望。","C":"想把所有风险都算清楚，最好一切可控。","D":"自己真正喜欢什么、认为什么值得。"}},{"number":4,"question":"如果计划突然被打乱，你的第一反应是？","options":{"A":"担心事情会越来越糟，想马上获得确定答案。","B":"嘴上说没关系，心里却有点烦，只是不说出来。","C":"马上重新安排步骤，把局面拉回正轨。","D":"先接受变化，再看看有没有新的可能。"}},{"number":5,"question":"在一段关系里，你最怕遇到什么？","options":{"A":"被忽略、被取代，或有一天突然被放弃。","B":"说出真实感受后，被嫌麻烦或不被理解。","C":"事情失控，自己付出很多却无法改变结果。","D":"为了关系慢慢失去自己，忘记原本想要的生活。"}},{"number":6,"question":"当别人向你提出要求，但你其实不想答应时，你会？","options":{"A":"怕对方不开心，最后还是答应了。","B":"不直接拒绝，找理由拖延，希望对方自己明白。","C":"衡量责任与后果，觉得该做就会做。","D":"坦白说出自己的界限，并尽量好好沟通。"}},{"number":7,"question":"当你努力很久，却迟迟看不到成果时，你会？","options":{"A":"怀疑是不是自己不够好，担心最后会失败。","B":"把失落藏起来，继续做，但动力会慢慢下降。","C":"检讨方法、调整计划，再努力把结果做出来。","D":"重新确认这件事是否仍值得我投入。"}},{"number":8,"question":"你和别人发生冲突时，通常会？","options":{"A":"很在意对方会不会因此不喜欢自己。","B":"先沉默或退让，避免当下把关系弄僵。","C":"希望把问题摊开，尽快讨论出结论。","D":"先冷静，等双方准备好再谈。"}},{"number":9,"question":"当你一个人安静下来，最常出现的念头是？","options":{"A":"我是不是不够好？别人会不会离开我？","B":"有些话我一直没说，有些感受只能自己消化。","C":"还有哪些事情没完成？我需要把生活安排好。","D":"我真正想要的生活是什么？现在的方向适合我吗？"}},{"number":10,"question":"如果有人误解了你，你最希望对方？","options":{"A":"明确告诉我，我对他依然重要。","B":"愿意耐心听我说，而不是马上评判我。","C":"把事实弄清楚，不要让误会继续扩大。","D":"尊重我有自己的想法，不一定要完全认同我。"}},{"number":11,"question":"当你需要帮助时，你通常会？","options":{"A":"希望有人主动关心，但不一定会直接开口。","B":"觉得开口很难，宁愿自己扛过去。","C":"先自己想办法，真的解决不了才求助。","D":"评估自己需要什么，再找合适的人帮忙。"}},{"number":12,"question":"如果今天可以改变一件事，你最想改变？","options":{"A":"不再总是担心失去，也能安心接受别人的爱。","B":"更勇敢地表达情绪和真实需求。","C":"不再什么都想控制，允许事情有不确定性。","D":"更清楚自己的方向，做出真正适合自己的选择。"}}];
+const LETTERS = ['A','B','C','D'];
+const answers=Array(QUESTIONS.length).fill(null);
+let index=0;
+let activeView='intro';
+const $=id=>document.getElementById(id);
+function escapeText(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function show(name){
+  activeView=name;
+  $('intro-view').hidden=name!=='intro';
+  $('quiz-view').hidden=name!=='quiz';
+  $('result-view').hidden=name!=='result';
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function updateDots(){
+  $('question-dots').innerHTML=QUESTIONS.map((q,i)=>{
+   const classes=['dot',answers[i]?'answered':'',i===index?'current':''].filter(Boolean).join(' ');
+   return `<button class="${classes}" type="button" data-step="${i}" aria-label="第 ${i+1} 题${answers[i]?'，已回答':''}" ${i===index?'aria-current="step"':''}></button>`;
+  }).join('');
+}
+function renderQuestion(){
+  const q=QUESTIONS[index];const num=String(index+1).padStart(2,'0');
+  $('step-label').textContent='QUESTION '+num;
+  $('progress-text').textContent=`第 ${index+1} / ${QUESTIONS.length} 题 · 已完成 ${answers.filter(Boolean).length} 题`;
+  $('progressbar').setAttribute('aria-valuenow',answers.filter(Boolean).length);
+  $('progress-fill').style.width=`${answers.filter(Boolean).length/QUESTIONS.length*100}%`;
+  $('question-index').textContent=num;
+  $('question-title').textContent=q.question;
+  $('option-list').innerHTML=LETTERS.map(letter=>{
+     const checked=answers[index]===letter?'checked':'';
+     return `<label class="option-label"><input type="radio" name="choice" value="${letter}" ${checked} aria-label="${letter}：${escapeText(q.options[letter])}"><span class="option-face"><span class="option-letter" aria-hidden="true">${letter}</span><span class="option-text">${escapeText(q.options[letter])}</span><span class="option-check" aria-hidden="true">✓</span></span></label>`;
+  }).join('');
+  $('next-btn').disabled=!answers[index];
+  $('next-btn').textContent=index===QUESTIONS.length-1?'完成并查看结果 →':'下一题 →';
+  $('previous-btn').textContent=index===0?'← 返回首页':'← 上一题';
+  updateDots();
+}
+function notify(s){
+  const el=$('toast');el.textContent=s;el.hidden=false;
+  clearTimeout(notify.timer);notify.timer=setTimeout(()=>el.hidden=true,2300);
+}
+function getSummaryText(){
+ const tally=Object.fromEntries(LETTERS.map(c=>[c,answers.filter(a=>a===c).length]));
+ return [
+ '心灵探索心理测试 · 记录你的选择','',
+ '答案速览：'+answers.map((x,i)=>`${i+1}${x}`).join('、'),
+ '选项统计：'+LETTERS.map(c=>`${c}: ${tally[c]} 次`).join(' | '),'',
+ ...QUESTIONS.map((q,i)=>`${String(i+1).padStart(2,'0')}. ${q.question}\n${answers[i]}. ${q.options[answers[i]]}\n`),
+ '结果用于自我探索与活动互动，不代表心理诊断。'
+ ].join('\n');
+}
+function renderResults(){
+ const tally=Object.fromEntries(LETTERS.map(c=>[c,answers.filter(a=>a===c).length]));
+ const max=Math.max(...Object.values(tally));
+ const leaders=LETTERS.filter(c=>tally[c]===max);
+ $('count-grid').innerHTML=LETTERS.map(c=>`<div class="count-tile"><span class="letter">${c}</span><span class="count">${tally[c]}</span><span class="pct">${Math.round(tally[c]/12*100)}%</span></div>`).join('');
+ $('bars').innerHTML=LETTERS.map(c=>`<div class="bar-row"><strong>${c}</strong><div class="bar-track"><div class="bar-fill" style="width:${tally[c]/12*100}%"></div></div><span>${tally[c]}/12</span></div>`).join('');
+ $('leading').textContent=`出现最多的选项：${leaders.join('、')}（${max} 次）${leaders.length>1?'，并列最多。':'。'}`;
+ $('answer-codes').innerHTML=answers.map((letter,i)=>`<div class="answer-code"><small>${String(i+1).padStart(2,'0')}</small><strong>${letter}</strong></div>`).join('');
+ $('answers-list').innerHTML=QUESTIONS.map((q,i)=>`<article class="answer-item"><header><span class="number">QUESTION ${String(i+1).padStart(2,'0')}</span><span class="answer-chip">${answers[i]}</span></header><p class="question">${escapeText(q.question)}</p><p class="answer">${escapeText(q.options[answers[i]])}</p></article>`).join('');
+ show('result');
+}
+$('start-btn').addEventListener('click',()=>{index=0;renderQuestion();show('quiz');});
+$('option-list').addEventListener('change',e=>{
+ if(e.target.matches('input[type="radio"]') && LETTERS.includes(e.target.value)){
+    answers[index]=e.target.value;renderQuestion();
+    // Preserve the selected option's focus for keyboard users after rerender.
+    const selected=$('option-list').querySelector('input:checked');if(selected) selected.focus({preventScroll:true});
+ }
+});
+$('next-btn').addEventListener('click',()=>{
+ if(!answers[index]){notify('请先选择一个答案');return;}
+ if(index<QUESTIONS.length-1){index++;renderQuestion();show('quiz');return;}
+ const missed=answers.findIndex(v=>!v);
+ if(missed!==-1){index=missed;renderQuestion();notify('请完成所有 12 题');return;}
+ renderResults();
+});
+$('previous-btn').addEventListener('click',()=>{
+ if(index===0){show('intro');return;}
+ index--;renderQuestion();show('quiz');
+});
+$('question-dots').addEventListener('click',e=>{
+ const b=e.target.closest('button[data-step]');if(!b)return;
+ index=Number(b.dataset.step);renderQuestion();show('quiz');
+});
+$('edit-btn').addEventListener('click',()=>{index=11;renderQuestion();show('quiz');});
+$('restart-btn').addEventListener('click',()=>{
+ if(!window.confirm('确定要清除全部答案并重新开始吗？'))return;
+ answers.fill(null);index=0;show('intro');
+});
+$('copy-btn').addEventListener('click',async()=>{
+ const content=getSummaryText();
+ try{
+   if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(content);}
+   else{const t=document.createElement('textarea');t.value=content;t.setAttribute('readonly','');t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();if(!ok)throw Error('copy failed');}
+   notify('结果已复制');
+ }catch(e){notify('复制失败，请使用「保存文字版」');}
+});
+$('save-btn').addEventListener('click',()=>{
+ const blob=new Blob(['\ufeff'+getSummaryText()],{type:'text/plain;charset=utf-8'});
+ const url=URL.createObjectURL(blob);const a=document.createElement('a');
+ a.href=url;a.download='心灵探索心理测试_我的选择.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+});
+$('print-btn').addEventListener('click',()=>window.print());
+show('intro');
+</script>
+</body>
+</html>
